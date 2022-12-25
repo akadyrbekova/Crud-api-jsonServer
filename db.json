@@ -1,3 +1,9 @@
 {
-  "products": []
+  "products": [
+    {
+      "name": "hello",
+      "status": false,
+      "id": 1
+    }
+  ]
 }
