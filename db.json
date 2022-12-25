@@ -1,8 +1,11 @@
 {
   "products": [
     {
-      "name": "hello",
-      "status": false,
+      "inpName": "",
+      "price": "",
+      "category": "",
+      "desc": "",
+      "url": "",
       "id": 1
     }
   ]

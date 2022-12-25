@@ -13,8 +13,13 @@ const EditProduct = () => {
   const handleEditInput = (e) => {
     let newTask = {
       ...newEditItem,
-      name: e.target.value,
+      inpName: e.target.value,
+      price: e.target.value,
+      category: e.target.value,
+      desc: e.target.value,
+      url: e.target.value,
     };
+
     setNewEditItem(newTask);
   };
 
@@ -26,32 +31,36 @@ const EditProduct = () => {
     <div>
       {newEditItem ? (
         <>
-          <Form className="container w-50">
+          <Form className="container w-50 mt-5">
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Название</Form.Label>
 
               <Form.Control
                 type="text"
-                value={newEditItem.name}
-                onChange={handleEditInput}
+                value={newEditItem.inpName}
+                onChange={(e) => handleEditInput(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Стоимость</Form.Label>
-              <Form.Control type="number" />
+              <Form.Control
+                type="number"
+                value={newEditItem.price}
+                onChange={(e) => handleEditInput(e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Категория</Form.Label>
-              <select defaultValue={"DEFAULT"}>
-                <option value="DEFAULT" disabled>
-                  Choose a salutation ...
+              <Form.Select>
+                <option></option>
+                <option value={newEditItem.category} onChange={handleEditInput}>
+                  Mercedes-Benz
                 </option>
-                <option value="1">Mr</option>
-                <option value="2">Mrs</option>
-                <option value="3">Ms</option>
-                <option value="4">Miss</option>
-                <option value="5">Dr</option>
-              </select>
+                <option>BMW</option>
+                <option>Tesla</option>
+                <option>Lada</option>
+                <option>Porsche</option>
+              </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Описание</Form.Label>
@@ -60,24 +69,30 @@ const EditProduct = () => {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
+                  value={newEditItem.desc}
+                  onChange={handleEditInput}
                 ></textarea>
               </div>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Url ссылка</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control
+                type="text"
+                value={newEditItem.url}
+                // onChange={handleEditInput}
+              />
             </Form.Group>
+            <Button
+              className="btn"
+              variant="success"
+              onClick={() => {
+                saveTask(newEditItem);
+                navigate("/list");
+              }}
+            >
+              Сохранить
+            </Button>
           </Form>
-          <Button
-            className="btn w-50"
-            variant="primary"
-            onClick={() => {
-              saveTask(newEditItem);
-              navigate("/list");
-            }}
-          >
-            Сохранить
-          </Button>
         </>
       ) : (
         "LOADING..."
