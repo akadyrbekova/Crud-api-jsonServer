@@ -10,13 +10,41 @@ const EditProduct = () => {
 
   const [newEditItem, setNewEditItem] = useState(productToEdit);
 
-  const handleEditInput = (e) => {
+  const handleEditName = (e) => {
     let newTask = {
       ...newEditItem,
       inpName: e.target.value,
+    };
+
+    setNewEditItem(newTask);
+  };
+  const handleEditPrice = (e) => {
+    let newTask = {
+      ...newEditItem,
       price: e.target.value,
+    };
+
+    setNewEditItem(newTask);
+  };
+  const handleEditCategory = (e) => {
+    let newTask = {
+      ...newEditItem,
       category: e.target.value,
+    };
+
+    setNewEditItem(newTask);
+  };
+  const handleEditDesc = (e) => {
+    let newTask = {
+      ...newEditItem,
       desc: e.target.value,
+    };
+
+    setNewEditItem(newTask);
+  };
+  const handleEditUrl = (e) => {
+    let newTask = {
+      ...newEditItem,
       url: e.target.value,
     };
 
@@ -38,7 +66,7 @@ const EditProduct = () => {
               <Form.Control
                 type="text"
                 value={newEditItem.inpName}
-                onChange={(e) => handleEditInput(e.target.value)}
+                onChange={handleEditName}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -46,20 +74,43 @@ const EditProduct = () => {
               <Form.Control
                 type="number"
                 value={newEditItem.price}
-                onChange={(e) => handleEditInput(e.target.value)}
+                onChange={handleEditPrice}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Категория</Form.Label>
               <Form.Select>
                 <option></option>
-                <option value={newEditItem.category} onChange={handleEditInput}>
+                <option
+                  value={newEditItem.category}
+                  onChange={handleEditCategory}
+                >
                   Mercedes-Benz
                 </option>
-                <option>BMW</option>
-                <option>Tesla</option>
-                <option>Lada</option>
-                <option>Porsche</option>
+                <option
+                  value={newEditItem.category}
+                  onChange={handleEditCategory}
+                >
+                  BMW
+                </option>
+                <option
+                  value={newEditItem.category}
+                  onChange={handleEditCategory}
+                >
+                  Tesla
+                </option>
+                <option
+                  value={newEditItem.category}
+                  onChange={handleEditCategory}
+                >
+                  Lada
+                </option>
+                <option
+                  value={newEditItem.category}
+                  onChange={handleEditCategory}
+                >
+                  Porsche
+                </option>
               </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -70,7 +121,7 @@ const EditProduct = () => {
                   id="exampleFormControlTextarea1"
                   rows="3"
                   value={newEditItem.desc}
-                  onChange={handleEditInput}
+                  onChange={handleEditDesc}
                 ></textarea>
               </div>
             </Form.Group>
@@ -79,7 +130,7 @@ const EditProduct = () => {
               <Form.Control
                 type="text"
                 value={newEditItem.url}
-                // onChange={handleEditInput}
+                onChange={handleEditUrl}
               />
             </Form.Group>
             <Button
